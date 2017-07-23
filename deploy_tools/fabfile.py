@@ -1,5 +1,5 @@
 from fabric.contrib.files import append, exists, sed
-from fabric.api import env, local, run
+from fabric.api import env, local, run, sudo
 import random
 
 
@@ -15,6 +15,7 @@ def deploy():
     _update_virtualenv(source_folder)
     _update_static_files(source_folder)
     _update_database(source_folder)
+    _restart_gunicorn_service()
     
 
 def _create_directory_structure_if_necessary(site_folder):
@@ -34,7 +35,7 @@ def _get_latest_source(source_folder):
 def _update_settings(source_folder, site_name):
     settings_path = source_folder + "/babysfirstwords/settings.py"
     sed(settings_path, "DEBUG = True", "DEBUG = False")  
-    sed(settings_path, "ALLOWED_HOSTS =.+$", "ALLOWED_HOSTS = ['{}']".format(site_name))
+    sed(settings_path, "ALLOWED_HOSTS =.+$", """ALLOWED_HOSTS = ["{}"]""".format(site_name))
     secret_key_file = source_folder + "/babysfirstwords/secret_key.py"
     if not exists(secret_key_file):  
         chars = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)"
@@ -56,3 +57,10 @@ def _update_static_files(source_folder):
 
 def _update_database(source_folder):
     run("cd {} && ../virtualenv/bin/python manage.py migrate --noinput".format(source_folder))
+
+
+def _restart_gunicorn_service():
+    sudo("systemctl enable gunicorn-babys-first-words.com")
+    sudo("systemctl start gunicorn-babys-first-words.com")
+    sudo("systemctl restart gunicorn-babys-first-words.com")
+
