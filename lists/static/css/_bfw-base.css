@@ -23,11 +23,12 @@
 }
 
 .bfw-header {
-     margin: 0;
-     color: #170A1C;
-     text-align: center;
-     padding: 1em 2em;
-     border-bottom: 1px solid #eee;
+    margin: 0;
+    color: #170A1C;
+    text-align: center;
+    padding: 1em 2em;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1.5em;
  }
 
 .bfw-header h1 {
@@ -46,6 +47,12 @@
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #0B7189;
+}
+
+.bfw-button-primary {
+    background-color: #9C95DC;
+    color: #fff;
+    margin: 0.1em !important;
 }
 
 .bfw-menu-link {
@@ -71,9 +78,5 @@
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #C19AB7;
-}
-
-#id_new_item {
-    margin-top: 2ex;
 }
 
