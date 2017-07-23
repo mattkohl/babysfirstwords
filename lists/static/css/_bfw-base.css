@@ -53,7 +53,7 @@
     padding: 1.5em 1em !important;
 }
 
-.bfw-menu-link:hover {
+.bfw-menu-link:hover, .bfw-menu-link:focus {
     background-color: #66a5ff !important;
 }
 
