@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Wendy+One');
+@font-face {
+  font-family: 'Wendy One';
+  src: url('../fonts/WendyOne-Regular.ttf');
+}
 
-/*
-colors
-https://coolors.co/c19ab7-0069ff-9c95dc-0b7189-170a1c
-*/
+/* colors https://coolors.co/c19ab7-0069ff-9c95dc-0b7189-170a1c */
 .color-palette {
-    color: #C19AB7; // Pastel purple
-    color: #9C95DC; // Blue bell
-    color: #0B7189; // Metallic Seaweed
-    color: #0069FF; // Brandeis Blue
-    color: #170A1C; // Black
+    color: #C19AB7; /* Pastel purple */
+    color: #9C95DC; /* Blue bell  */
+    color: #0B7189; /* Metallic Seaweed */
+    color: #0069FF; /* Brandeis Blue */
+    color: #170A1C; /* Black */
 }
 
 .content {
