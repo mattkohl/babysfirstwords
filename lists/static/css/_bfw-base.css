@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Wendy+One');
+
+/*
+colors
+https://coolors.co/c19ab7-0069ff-9c95dc-0b7189-170a1c
+*/
+.color-palette {
+    color: #C19AB7; // Pastel purple
+    color: #9C95DC; // Blue bell
+    color: #0B7189; // Metallic Seaweed
+    color: #0069FF; // Brandeis Blue
+    color: #170A1C; // Black
+}
+
+.content {
+    margin: 0 auto;
+    padding: 1em 2em;
+    max-width: 800px;
+    color: #170A1C;
+    text-align: center;
+    margin-bottom: 50px;
+    line-height: 1.6em;
+}
+
+.header {
+     margin: 0;
+     color: #170A1C;
+     text-align: center;
+     padding: 2.5em 2em 0;
+     border-bottom: 1px solid #eee;
+ }
+
+.header h1 {
+    margin: 0.2em 0;
+    font-size: 3em;
+    font-weight: 300;
+}
+.header h2 {
+    font-weight: 300;
+    color: #888;
+    padding: 0;
+    margin-top: 0;
+}
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #0B7189;
+}
+
+.bfw-menu-link {
+    color: white !important;
+    padding: 1.5em 1em !important;
+}
+
+.bfw-menu-link:hover {
+    background-color: #66a5ff !important;
+}
+
+.bfw-logo {
+    font-family: 'Wendy One', sans-serif !important;
+    text-transform: none !important;
+    font-size: 1.6em !important;
+    color: white !important;
+    padding: 0.75em 1em !important;
+}
+
+.bfw-nav-list {
+    font-size: 0.9em !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #C19AB7;
+}
+
+#id_new_item {
+    margin-top: 2ex;
+}
+
