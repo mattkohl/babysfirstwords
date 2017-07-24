@@ -12,14 +12,14 @@ class NewVisitorTest(FunctionalTest):
         header_text = self.browser.find_element_by_tag_name("h1").text
         self.assertIn("Start a new list", header_text)
 
-        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox = self.get_item_input_box()
         self.assertEqual(inputbox.get_attribute("placeholder"), "Enter a word")
 
         inputbox.send_keys("Dada")
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table("1: Dada")
 
-        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox = self.get_item_input_box()
         inputbox.send_keys("Mama")
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table("2: Mama")
@@ -27,7 +27,7 @@ class NewVisitorTest(FunctionalTest):
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
         self.browser.get(self.live_server_url)
-        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox = self.get_item_input_box()
         inputbox.send_keys("Dada")
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table("1: Dada")
@@ -42,7 +42,7 @@ class NewVisitorTest(FunctionalTest):
         page_text = self.browser.find_element_by_tag_name("body").text
         self.assertNotIn("Dada", page_text)
 
-        inputbox = self.browser.find_element_by_id("id_new_item")
+        inputbox = self.get_item_input_box()
         inputbox.send_keys("Boo")
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table("1: Boo")

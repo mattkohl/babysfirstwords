@@ -28,12 +28,12 @@
             <div class="pure-u-1 pure-u-sm-11-12 pure-u-md-3-5">
                 <form class="pure-form pure-g" method="POST" action="{% block form_action %}{% endblock %}">
                     <div class="pure-u-4-5">
-                        <input id="id_new_item" name="item_text" class="form-control pure-input-1" placeholder="Enter a word" required>
+                        {{ form.text }}
                     </div>
                     {% csrf_token %}
-                    {% if error %}
+                    {% if form.errors %}
                         <div class="form-group has-error">
-                            <span class="help-block">{{ error }}</span>
+                            <div class="help-block">{{ form.text.errors }}</div>
                         </div>
                     {% endif %}
                     <div class="pure-u-1-5">
