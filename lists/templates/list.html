@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}Your words - {% endblock %}
 
 {% block header_text %}Your words{% endblock %}
 
-{% block form_action %}{% url 'view_list' list.id %}{% endblock %}
+{% block form_action %}{% url "view_list" list.id %}{% endblock %}
 
 {% block table %}
-  <table id="id_list_table" class="table pure-table-horizontal">
+  <table id="id_list_table" class="table pure-table-horizontal pure-u-1">
     {% for item in list.item_set.all %}
       <tr><td>{{ forloop.counter }}: {{ item.text }}</td></tr>
     {% endfor %}

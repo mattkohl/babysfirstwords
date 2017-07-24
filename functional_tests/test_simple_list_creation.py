@@ -8,6 +8,7 @@ class NewVisitorTest(FunctionalTest):
 
     def test_can_start_a_list_for_one_user(self):
         self.browser.get(self.live_server_url)
+
         self.assertIn("Baby's First Words", self.browser.title)
         header_text = self.browser.find_element_by_tag_name("h1").text
         self.assertIn("Start a new list", header_text)
@@ -22,8 +23,9 @@ class NewVisitorTest(FunctionalTest):
         inputbox = self.get_item_input_box()
         inputbox.send_keys("Mama")
         inputbox.send_keys(Keys.ENTER)
-        self.wait_for_row_in_list_table("2: Mama")
+
         self.wait_for_row_in_list_table("1: Dada")
+        self.wait_for_row_in_list_table("2: Mama")
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
         self.browser.get(self.live_server_url)
