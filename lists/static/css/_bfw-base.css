@@ -64,6 +64,10 @@
     background-color: #66a5ff !important;
 }
 
+.bfw-nav-label {
+    display: none;
+}
+
 .bfw-logo {
     font-family: 'Wendy One', sans-serif !important;
     text-transform: none !important;
@@ -80,3 +84,10 @@
     color: #C19AB7;
 }
 
+@media (max-width: 767px) {
+    .bfw-nav-label {
+        display: inline;
+        position: absolute;
+        left: 50px;
+    }
+}
