@@ -7,6 +7,9 @@ REPO_URL = "https://github.com/mattkohl/babysfirstwords.git"
 
 
 def deploy():
+    """
+    To deploy with Fabric, execute this command: fab deploy:host=username@hostname
+    """
     site_folder = "/home/{}/sites/{}".format(env.user, env.host)
     source_folder = site_folder + "/source"
     _create_directory_structure_if_necessary(site_folder)
