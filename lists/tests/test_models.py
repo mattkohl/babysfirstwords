@@ -23,30 +23,20 @@ class ItemModelTest(TestCase):
             item.save()
             item.full_clean()
 
-    def test_string_representation(self):
-        item = Item(text="some text")
-        self.assertEqual(str(item), "some text")
-
-
-class ListModelTest(TestCase):
-
-    def test_get_absolute_url(self):
-        list_ = List.objects.create()
-        self.assertEqual(list_.get_absolute_url(), "/lists/{}/".format(list_.id))
-        
     def test_duplicate_items_are_invalid(self):
         list_ = List.objects.create()
         Item.objects.create(list=list_, text="dada")
         with self.assertRaises(ValidationError):
             item = Item(list=list_, text="dada")
             item.full_clean()
-            
-    def test_CAN_save_same_item_to_different_lists(self):
+
+    @staticmethod
+    def test_CAN_save_same_item_to_different_lists():
         list1 = List.objects.create()
         list2 = List.objects.create()
         Item.objects.create(list=list1, text="dada")
         item = Item(list=list2, text="dada")
-        item.full_clean() 
+        item.full_clean() # should not raise
 
     def test_list_ordering(self):
         list1 = List.objects.create()
@@ -57,3 +47,15 @@ class ListModelTest(TestCase):
             list(Item.objects.all()),
             [item1, item2, item3]
         )
+
+    def test_string_representation(self):
+        item = Item(text="some text")
+        self.assertEqual(str(item), "some text")
+
+
+class ListModelTest(TestCase):
+
+    def test_get_absolute_url(self):
+        list_ = List.objects.create()
+        self.assertEqual(list_.get_absolute_url(), "/lists/{}/".format(list_.id))
+
