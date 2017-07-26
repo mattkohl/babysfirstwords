@@ -1,8 +1,12 @@
+from unittest import skip
 from selenium.webdriver.common.keys import Keys
 from functional_tests.base import FunctionalTest
 
 
 class ItemValidationTest(FunctionalTest):
+
+    def get_error_element(self):
+        return self.browser.find_element_by_css_selector('.has-error')
 
     def test_cannot_add_empty_list_items(self):
 
@@ -58,10 +62,11 @@ class ItemValidationTest(FunctionalTest):
 
         # Get an error message
         self.wait_for(lambda: self.assertEqual(
-            self.browser.find_element_by_css_selector(".has-error").text,
+            self.get_error_element().text,
             "You already have this in your list"
         ))
 
+    @skip
     def test_error_messages_are_cleared_on_input(self):
         # Start a list and causes a validation error
         self.browser.get(self.live_server_url)
@@ -72,7 +77,7 @@ class ItemValidationTest(FunctionalTest):
         self.get_item_input_box().send_keys(Keys.ENTER)
 
         self.wait_for(lambda: self.assertTrue(
-            self.browser.find_element_by_css_selector(".has-error").is_displayed()
+            self.get_error_element().is_displayed()
         ))
 
         # Start typing in the input box to clear the error
@@ -80,5 +85,5 @@ class ItemValidationTest(FunctionalTest):
 
         # The error message disappears
         self.wait_for(lambda: self.assertFalse(
-            self.browser.find_element_by_css_selector(".has-error").is_displayed()
+            self.get_error_element().is_displayed()
         ))
