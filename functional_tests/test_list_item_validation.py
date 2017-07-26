@@ -66,7 +66,6 @@ class ItemValidationTest(FunctionalTest):
             "You already have this in your list"
         ))
 
-    @skip
     def test_error_messages_are_cleared_on_input(self):
         # Start a list and causes a validation error
         self.browser.get(self.live_server_url)

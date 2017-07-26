@@ -51,12 +51,14 @@
     </div>
 </div>
 
-<script src="/static/jquery-3.1.1.min.js"></script>
+<script src="/static/js/jquery-3.2.1.min.js"></script>
 <script src="https://use.fontawesome.com/4c28e24564.js"></script>
 <script src="/static/js/ui.js"></script>
-<script src="/static/list.js"></script>
+<script src="/static/js/list.js"></script>
 <script>
-  initialize();
+$(document).ready(function () {
+  window.babysFirstWords.initialize();
+});
 </script>
 {% block scripts %}{% endblock %}
 
