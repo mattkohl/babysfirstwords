@@ -12,6 +12,29 @@
     color: #170A1C; /* Black */
 }
 
+.bfw-splash-container {
+    background: #0069ff;
+    color: white;
+    z-index: 1;
+    overflow: hidden;
+    /* The following styles are required for the "scroll-over" effect */
+    width: 100%;
+    height: 100%;
+    top: 4.1em;
+    left: 0;
+    position: fixed !important;
+}
+
+.bfw-splash {
+    /* absolute center .splash within .splash-container */
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100px; left: 0; bottom: 0; right: 0;
+    text-align: center;
+}
+
 .bfw-content {
     margin: 0 auto;
     padding: 1em 2em;

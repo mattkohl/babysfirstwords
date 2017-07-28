@@ -14,6 +14,7 @@ def deploy():
     source_folder = site_folder + "/source"
     _create_directory_structure_if_necessary(site_folder)
     _get_latest_source(source_folder)
+    _set_email_env()
     _update_settings(source_folder, env.host)  
     _update_virtualenv(source_folder)
     _update_static_files(source_folder)
@@ -67,3 +68,11 @@ def _restart_gunicorn_service():
     sudo("systemctl start gunicorn-babys-first-words.com")
     sudo("systemctl restart gunicorn-babys-first-words.com")
 
+
+class DeployException(Exception):
+
+    def __init__(self, m):
+        self.message = m
+
+    def __str__(self):
+        return self.message

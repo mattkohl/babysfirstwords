@@ -105,6 +105,20 @@
                         <span class="bfw-nav-label"> Contact</span>
                     </a>
                 </li>
+                {% if user.is_authenticated %}
+                    <li class="pure-menu-item">Logged in as {{ user.email}}</li>
+                    <li class="pure-menu-item">
+                        <a id="id_logout" class="pure-button bfw-button-primary" href="{% url 'logout' %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class="pure-menu-item" style="padding-right: 1em;">
+                        <form method="POST" class="pure-form" action ="#">
+                            <input id="login" name="email" type="email" placeholder="Email"/>
+                            {% csrf_token %}
+                            <button type="submit" class="pure-button bfw-button-primary">Sign in</button>
+                        </form>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
