@@ -112,7 +112,7 @@
                     </li>
                 {% else %}
                     <li class="pure-menu-item" style="padding-right: 1em;">
-                        <form method="POST" class="pure-form" action ="#">
+                        <form method="POST" class="pure-form" action ="{% url 'send_login_email' %}">
                             <input id="login" name="email" type="email" placeholder="Email"/>
                             {% csrf_token %}
                             <button type="submit" class="pure-button bfw-button-primary">Sign in</button>
