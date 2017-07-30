@@ -129,8 +129,8 @@ STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
 
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
+EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS", "user@example.com")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD", "42")
 EMAIL_USE_TLS = True
 
 

@@ -30,4 +30,4 @@ def login(request):
     user = auth.authenticate(uid=request.GET.get("token"))
     if user:
         auth.login(request, user)
-    return redirect('/')
+    return redirect("/")
