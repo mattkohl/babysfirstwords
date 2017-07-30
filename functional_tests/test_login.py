@@ -42,9 +42,3 @@ class LoginTest(FunctionalTest):
 
         # user is logged in!
         self.wait_to_be_logged_in(email=TEST_EMAIL)
-
-        # user logs out
-        self.browser.find_element_by_link_text("Log out").click()
-
-        # user is logged out
-        self.wait_to_be_logged_out(email=TEST_EMAIL)
