@@ -11,7 +11,6 @@ SUBJECT = "Your login link for Baby's First Words"
 
 class LoginTest(FunctionalTest):
 
-    @skip
     def test_can_get_email_link_to_log_in(self):
 
         # Go to site and enter email address
@@ -32,7 +31,7 @@ class LoginTest(FunctionalTest):
 
         # Message has a url link in it
         self.assertIn("Use this link to log in", email.body)
-        url_search = re.search(r"http://.+/.+$", email.body)
+        url_search = re.search(r"https?://.+/.+$", email.body)
         if not url_search:
             self.fail("Could not find url in email body:\n{}".format(email.body))
         url = url_search.group(0)
