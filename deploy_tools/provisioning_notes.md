@@ -23,6 +23,8 @@ eg, on Ubuntu 16.04:
 * see gunicorn-systemd.template.service
 * replace USERNAME with username
 * replace SITENAME with my-domain.com
+* replace BFW_EMAIL_ADDRESS with site email address
+* replace BFW_EMAIL_PASSWORD with site email password
 
 ## Folder structure:
 Assume we have a user account at /home/username
