@@ -1,4 +1,7 @@
+import unittest
 from unittest import skip
+from unittest.mock import patch
+from django.http import HttpRequest
 from django.test import TestCase
 from django.utils.html import escape
 from django.contrib.auth import get_user_model
@@ -7,6 +10,7 @@ from lists.forms import (
     DUPLICATE_ITEM_ERROR, EMPTY_ITEM_ERROR,
     ExistingListItemForm, ItemForm,
 )
+from lists.views import new_list2
 
 
 User = get_user_model()
@@ -176,6 +180,18 @@ class ListViewTest(TestCase):
         response = self.client.get("/lists/{}/".format(list_.id))
         self.assertIsInstance(response.context["form"], ExistingListItemForm)
         self.assertContains(response, 'name="text"')
+
+
+@patch('lists.views.NewListForm')
+class NewListViewTest(unittest.TestCase):
+
+    def setUp(self):
+        self.request = HttpRequest()
+        self.request.POST["text"] = "new list item"
+
+    def test_passes_POST_data_to_NewListForm(self, mockNewListForm):
+        new_list2(self.request)
+        mockNewListForm.assert_called_once_with(data=self.request.POST)
 
 
 class MyListsTest(TestCase):
