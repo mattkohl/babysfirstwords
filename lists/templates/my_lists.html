@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header_text %}{% endblock %}
+
+{% block list_form %}{% endblock %}
+
+{% block extra_content %}
+    <h2>{{ owner.email }}'s lists</h2>
+    <ul class="pure-menu-list">
+        {% for list in owner.list_set.all %}
+            <li class="pure-menu-item">
+                <a class="pure-menu-link" href="{{ list.get_absolute_url }}">{{ list.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

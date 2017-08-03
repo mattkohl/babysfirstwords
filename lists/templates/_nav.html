@@ -105,8 +105,10 @@
                         <span class="bfw-nav-label"> Contact</span>
                     </a>
                 </li>
-                {% if user.is_authenticated %}
-                    <li class="pure-menu-item">Logged in as {{ user.email}}</li>
+                {% if user.email %}
+                    <li class="pure-menu-item">
+                        <a class="pure-button bfw-button-primary" href="{% url 'my_lists' user.email %}">My lists</a>
+                    </li>
                     <li class="pure-menu-item">
                         <a id="id_logout" class="pure-button bfw-button-primary" href="{% url 'logout' %}">Log out</a>
                     </li>
@@ -123,3 +125,6 @@
         </div>
     </div>
 </div>
+{% if user.email %}
+    <div id="logged-in-as">Logged in as {{ user.email}}</div>
+{% endif %}
