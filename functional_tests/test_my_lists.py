@@ -44,7 +44,10 @@ class MyListsTest(FunctionalTest):
 
         # User decides to start another list, just to see
         self.browser.get(self.live_server_url)
+        self.browser.get(self.live_server_url)
         self.add_list_item("cows")
+        self.add_list_item("horses")
+        self.add_list_item("ducks")
         second_list_url = self.browser.current_url
 
         # Under "my lists", the new list appears
