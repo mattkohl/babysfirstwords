@@ -10,7 +10,7 @@ from selenium.common.exceptions import WebDriverException
 from .server_tools import reset_database
 
 
-MAX_WAIT = 10
+MAX_WAIT = 12
 
 
 def wait(fn):
@@ -42,9 +42,6 @@ class FunctionalTest(StaticLiveServerTestCase):
     def wait_for(self, fn):
         return fn()
 
-    def get_item_input_box(self):
-        return self.browser.find_element_by_id("id_text")
-
     @wait
     def wait_for_row_in_list_table(self, row_text):
         table = self.browser.find_element_by_id("id_list_table")
@@ -56,11 +53,15 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.find_element_by_link_text("Log out")
         navbar = self.browser.find_element_by_css_selector(".navbar")
         self.assertIn(email, navbar.text)
-        
+
+    @wait
     def wait_to_be_logged_out(self, email):
         self.browser.find_element_by_name("email")
         navbar = self.browser.find_element_by_css_selector(".navbar")
         self.assertNotIn(email, navbar.text)
+
+    def get_item_input_box(self):
+        return self.browser.find_element_by_id("id_text")
 
     def add_list_item(self, item_text):
         num_rows = len(self.browser.find_elements_by_css_selector("#id_list_table tr"))
