@@ -16,13 +16,19 @@ class List(models.Model):
     def name(self):
         return self.item_set.first().text
 
+    @staticmethod
+    def create_new(first_item_text, owner=None):
+        list_ = List.objects.create(owner=owner)
+        Item.objects.create(text=first_item_text, list=list_)
+        return list_
+
 
 class Item(models.Model):
     text = models.TextField(default="")
     list = models.ForeignKey(List, default=None)
 
     class Meta:
-        ordering = ('id',)
+        ordering = ("id",)
         unique_together = ("list", "text")
 
     def __str__(self):
