@@ -28,7 +28,6 @@ class MyListsTest(FunctionalTest):
         self.browser.get(self.live_server_url)
         self.add_list_item("trucks")
         self.add_list_item("boats")
-        first_list_url = self.browser.current_url
 
         # User notices a "My lists" link, for the first time.
         self.browser.find_element_by_link_text("My lists").click()
@@ -38,7 +37,6 @@ class MyListsTest(FunctionalTest):
             lambda: self.browser.find_element_by_link_text("trucks")
         )
         self.browser.find_element_by_link_text("trucks").click()
-        # self.wait_for(lambda: self.assertEqual(self.browser.current_url, first_list_url))
 
         # User decides to start another list, just to see
         self.browser.get(self.live_server_url)
@@ -46,7 +44,6 @@ class MyListsTest(FunctionalTest):
         self.add_list_item("cows")
         self.add_list_item("horses")
         self.add_list_item("ducks")
-        second_list_url = self.browser.current_url
 
         # Under "my lists", the new list appears
         self.browser.find_element_by_link_text("My lists").click()
