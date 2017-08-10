@@ -14,6 +14,7 @@ def quit_if_possible(browser):
 
 class SharingTest(FunctionalTest):
 
+    @skip
     def test_can_share_a_list_with_another_user(self):
         # User is a logged-in user
         self.create_pre_authenticated_session("user@example.com")

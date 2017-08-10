@@ -81,6 +81,13 @@ class ListModelTest(TestCase):
         List(owner=User())  # should not raise
 
     @staticmethod
+    def test_lists_have_a_shared_with_add():
+        list_ = List.objects.create()
+        user = User.objects.create()
+        Item.objects.create(list=list_, text="first item")
+        list_.shared_with.add(user)
+
+    @staticmethod
     def test_list_owner_is_optional():
         List().full_clean()  # should not raise
 
