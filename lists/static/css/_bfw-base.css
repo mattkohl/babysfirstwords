@@ -3,6 +3,11 @@
   src: url('../fonts/WendyOne-Regular.ttf');
 }
 
+nav {
+    color: #fff;
+    background-color: #0069ff !important;
+}
+
 /* colors https://coolors.co/c19ab7-0069ff-9c95dc-0b7189-170a1c */
 .color-palette {
     color: #C19AB7; /* Pastel purple */
@@ -85,6 +90,19 @@
     margin: 0.1em !important;
 }
 
+.bfw-btn-outline-success {
+    color: #fff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #fff;
+}
+
+.bfw-btn-outline-success:hover, .bfw-btn-outline-success.active, .bfw-btn-outline-success:active, .show>.bfw-btn-outline-success.dropdown-toggle {
+    color: #0069ff;
+    background-color: #fff;
+    border-color: #fff;
+}
+
 .bfw-menu-link {
     color: white !important;
     padding: 1.5em 1em !important;
@@ -98,12 +116,15 @@
     display: none;
 }
 
+.bfw-navbar-toggler {
+    color: #fff !important;
+}
+
 .bfw-logo {
     font-family: 'Wendy One', sans-serif !important;
     text-transform: none !important;
-    font-size: 1.6em !important;
+    font-size: 1.4em !important;
     color: white !important;
-    padding: 0.75em 1em !important;
 }
 
 .bfw-share-wrapper {

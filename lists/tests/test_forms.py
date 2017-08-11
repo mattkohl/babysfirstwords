@@ -11,7 +11,7 @@ class ItemFormTest(TestCase):
     def test_form_item_input_has_placeholder_and_css_classes(self):
         form = ItemForm()
         self.assertIn('placeholder="Enter a word"', form.as_p())
-        self.assertIn('class="form-control pure-input-1"', form.as_p())
+        self.assertIn('class="form-control"', form.as_p())
 
     def test_form_validation_for_blank_items(self):
         form = ItemForm(data={"text": ""})

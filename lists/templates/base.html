@@ -7,9 +7,8 @@
     <meta name="description" content="An app to track your child's language development">
     <title>{% block title %}{% endblock %}Baby's First Words</title>
 
-    <link rel="stylesheet" href="/static/css/pure-min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/_bfw-base.css">
-    <link rel="stylesheet" href="/static/css/grids-responsive-min.css">
 
     <!--<link rel="icon" type="image/png" href="static/img/logo-16x16.png" sizes="16x16">-->
     <!--<link rel="icon" type="image/png" href="static/img/logo-32x32.png" sizes="32x32">-->
@@ -17,58 +16,60 @@
 </head>
 <body>
 {% include "_nav.html" %}
-<div id="layout">
-    <div id="main">
+<div id="container">
+    <div class="row">
+        <div id="main" class="col">
 
-        {% if messages %}
-            <div class="row">
-                <div class="col-md-8">
-                {% for message in messages %}
-                    {% if message.level_tag == 'success' %}
-                        <div class="alert alert-success">{{ message }}</div>
-                    {% else %}
-                        <div class="alert alert-warning">{{ message }}</div>
-                    {% endif %}
-                {% endfor %}
-                </div>
-            </div>
-        {% endif %}
-
-        <div class="bfw-header">
-            <h1>{% block header_text %}{% endblock %}</h1>
-            <h2>{% block sub_header_text %}{% endblock %}</h2>
-        </div>
-
-        <div class="bfw-content-wrapper">
-            <div class="bfw-content pure-g">
-                <div class="pure-u-sm-1-12 pure-u-md-1-5"></div>
-                <div class="pure-u-1 pure-u-sm-11-12 pure-u-md-3-5">
-                    {% block list_form %}
-                        <form class="pure-form pure-g" method="POST" action="{% block form_action %}{% endblock %}">
-                            <div class="pure-u-4-5">
-                                {{ form.text }}
-                            </div>
-                            {% csrf_token %}
-                            {% if form.errors %}
-                                <div class="form-group has-error">
-                                    <div class="help-block">{{ form.text.errors }}</div>
-                                </div>
-                            {% endif %}
-                            <div class="pure-u-1-5">
-                                <button class="pure-button bfw-button-primary">
-                                    <i class="fa fa-paper-plane"></i>
-                                </button>
-                            </div>
-                        </form>
-                    {% endblock list_form %}
-                    <div class="pure-g">
-                        {% block table %}{% endblock %}
+            {% if messages %}
+                <div class="row">
+                    <div class="col-md-8">
+                    {% for message in messages %}
+                        {% if message.level_tag == 'success' %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% else %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
                     </div>
-
-                    {% block extra_content %}{% endblock %}
-
                 </div>
-                <div class="pure-u-md-1-5"></div>
+            {% endif %}
+
+            <div class="bfw-header">
+                <h1>{% block header_text %}{% endblock %}</h1>
+                <h2>{% block sub_header_text %}{% endblock %}</h2>
+            </div>
+
+            <div class="bfw-content-wrapper">
+                <div class="bfw-content">
+                    <div class="text-center">
+                        {% block list_form %}
+                            <form method="POST" action="{% block form_action %}{% endblock %}">
+                                <div class="form-row align-items-center">
+                                    <div class="col-sm-10">
+                                        {{ form.text }}
+                                    </div>
+                                    {% csrf_token %}
+                                    {% if form.errors %}
+                                        <div class="form-group has-error">
+                                            <div class="help-block">{{ form.text.errors }}</div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-primary">
+                                            <i class="fa fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        {% endblock list_form %}
+                        <div class="">
+                            {% block table %}{% endblock %}
+                        </div>
+
+                        {% block extra_content %}{% endblock %}
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +77,6 @@
 
 <script src="/static/js/jquery-3.2.1.min.js"></script>
 <script src="https://use.fontawesome.com/4c28e24564.js"></script>
-<script src="/static/js/ui.js"></script>
 <script src="/static/js/list.js"></script>
 <script>
 $(document).ready(function () {
