@@ -15,9 +15,19 @@
 {% endblock %}
 
 {% block extra_content %}
-<form method="POST" class="pure-form" action ="{% url 'share_list' list.id %}">
-    <input id="sharee" name="sharee" type="email" placeholder="Email"/>
-    {% csrf_token %}
-    <button class="pure-button bfw-button-primary">Share</button>
-</form>
+
+    <div class="bfw-share-form-wrapper pure-g">
+        <div class="pure-u-1">Add another user to this list</div>
+        <form method="POST" class="pure-form bfw-share-form pure-g" action ="{% url 'share_list' list.id %}">
+            <div class="pure-u-4-5">
+                <input id="sharee" name="sharee" type="email" placeholder="Email"/>
+            </div>
+            {% csrf_token %}
+            <div class="pure-u-1-5">
+                <button class="pure-button bfw-button-primary">
+                    <i class="fa fa-plus"></i>
+                </button>
+            </div>
+        </form>
+    </div>
 {% endblock %}

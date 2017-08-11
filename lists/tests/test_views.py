@@ -221,22 +221,14 @@ class ShareListTest(TestCase):
     def test_post_redirects_to_list_page(self):
         list_ = List.objects.create()
 
-        response = self.client.post(
-            "/lists/{}/share".format(list_.id),
-            data={"text": "A new item for an existing list"}
-        )
+        response = self.client.post("/lists/{}/share".format(list_.id), data={"text": "A new item"})
         self.assertRedirects(response, "/lists/{}/".format(list_.id))
 
-    @skip
     def test_sharee_added_to_shared_list(self):
         list_ = List.objects.create()
         user = User.objects.create(email="a@b.com")
 
-        self.client.post(
-            "/lists/{}/share".format(list_.id),
-            data={"sharee": user.email}
-        )
+        self.client.post("/lists/{}/share".format(list_.id), data={"sharee": user.email})
 
         shared_with = list_.shared_with.all()
-        self.assertTrue(shared_with.count() > 1)
-
+        self.assertTrue(shared_with.count() > 0)

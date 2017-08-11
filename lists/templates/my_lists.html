@@ -12,5 +12,11 @@
                 <a class="pure-menu-link" href="{{ list.get_absolute_url }}">{{ list.name }}</a>
             </li>
         {% endfor %}
+        {% for list in owner.shares_list.all %}
+            <li class="pure-menu-item">
+                <a class="pure-menu-link" href="{{ list.get_absolute_url }}">{{ list.name }}</a>
+            </li>
+        {% endfor %}
     </ul>
+
 {% endblock %}
