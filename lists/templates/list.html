@@ -15,8 +15,14 @@
 {% endblock %}
 
 {% block extra_content %}
+    <div class="bfw-share-wrapper pure-g">
+        <div class="pure-u-1">Shared with</div>
+        <ul class="pure-u-1 pure-menu-list">
+            {% for user in list.shared_with.all %}
+                <li class="pure-menu-item list-sharee">{{ user.email }}</li>
+            {% endfor %}
+        </ul>
 
-    <div class="bfw-share-form-wrapper pure-g">
         <div class="pure-u-1">Add another user to this list</div>
         <form method="POST" class="pure-form bfw-share-form pure-g" action ="{% url 'share_list' list.id %}">
             <div class="pure-u-4-5">

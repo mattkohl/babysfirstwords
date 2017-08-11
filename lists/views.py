@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-from lists.models import Item, List
+from lists.models import List
 from lists.forms import ItemForm, ExistingListItemForm, NewListForm
 
 

@@ -34,7 +34,7 @@ class SharingTest(FunctionalTest):
 
         # User notices a "Share this list" option
         share_box = list_page.get_share_box()
-        self.assertEqual(share_box.get_attribute("placeholder"), "your-friend@example.com")
+        self.assertEqual(share_box.get_attribute("placeholder"), "Email")
 
         # User shares the list
         list_page.share_list_with("your-friend@example.com")
